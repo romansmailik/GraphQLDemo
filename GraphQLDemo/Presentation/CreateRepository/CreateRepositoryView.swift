@@ -15,20 +15,6 @@ enum CreateRepositoryViewAction {
     case doneTapped
 }
 
-enum RepositoryScopeOption: CaseIterable {
-    case `private`
-    case `public`
-    
-    var title: String {
-        switch self {
-        case .private:
-            return "Private"
-        case .public:
-            return "Public"
-        }
-    }
-}
-
 final class CreateRepositoryView: BaseView {
     // MARK: - Subviews
     private let titleTextField = UITextField()
