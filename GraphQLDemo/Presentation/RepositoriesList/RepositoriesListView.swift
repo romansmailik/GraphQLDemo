@@ -12,19 +12,13 @@ enum RepositoriesListViewAction {
     case didSelect(displayOption: RepositoryDisplayOption)
 }
 
-extension Collection {
-    /// Returns the element at the specified index if it is within bounds, otherwise nil.
-    subscript (safe index: Index) -> Element? {
-        return indices.contains(index) ? self[index] : nil
-    }
-}
-
 final class RepositoriesListView: BaseView {
     // MARK: - Subviews
     private let segmentedControl = UISegmentedControl()
     private let tableView = UITableView()
     
-    let displayOptions = RepositoryDisplayOption.allCases
+    private let displayOptions = RepositoryDisplayOption.allCases
+    private var repositories: [RepositoryDomainModel] = []
 
     // MARK: - Action Publisher
     private(set) lazy var actionPublisher = actionSubject.eraseToAnyPublisher()
@@ -44,6 +38,10 @@ final class RepositoriesListView: BaseView {
 
 // MARK: - Public methods
 extension RepositoriesListView {
+    func show(repositories: [RepositoryDomainModel]) {
+        self.repositories = repositories
+        tableView.reloadData()
+    }
 }
 
 // MARK: - Private methods
@@ -57,7 +55,8 @@ private extension RepositoriesListView {
     func bindActions() {
         segmentedControl.selectedSegmentIndexPublisher
             .compactMap { self.displayOptions[safe: $0] }
-            .sink { [unowned self] in actionSubject.send(.didSelect(displayOption: $0)) }
+            .map { RepositoriesListViewAction.didSelect(displayOption: $0) }
+            .sink { [unowned self] in actionSubject.send($0) }
             .store(in: &cancellables)
     }
 
@@ -85,12 +84,14 @@ private extension RepositoriesListView {
 
 extension RepositoriesListView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return repositories.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RepositoryTableViewCell", for: indexPath) as! RepositoryTableViewCell
-        cell.setup()
+        if let repository = repositories[safe: indexPath.row] {
+            cell.setup(with: repository)
+        }
         return cell
     }
     

@@ -25,10 +25,11 @@ final class RepositoryTableViewCell: UITableViewCell {
         initialSetup()
     }
     
-    func setup() {
-        titleLabel.text = "Title"
-        descriptionLabel.text = "Description"
-        starsLabel.text = "\(Int.random(in: 1...5))"
+    func setup(with repository: RepositoryDomainModel) {
+        titleLabel.text = repository.title
+        descriptionLabel.text = repository.description
+        starStack.isHidden = repository.starsCount == 0
+        starsLabel.text = "\(repository.starsCount)"
     }
 }
 
@@ -40,16 +41,6 @@ private extension RepositoryTableViewCell {
     
     func setupUI() {
         starImageView.image = UIImage(systemName: "star.fill")?.withTintColor(.systemYellow)
-        
-//        infoStack.setContentHuggingPriority(.defaultLow, for: .horizontal)
-//        infoStack.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
-//        starStack.setContentHuggingPriority(.defaultHigh, for: .horizontal)
-//        starStack.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
-        
-//        infoStack.setContentHuggingPriority(.defaultHigh, for: .horizontal)
-//        infoStack.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
-//        starStack.setContentHuggingPriority(.defaultLow, for: .horizontal)
-//        starStack.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
     }
     
     func setupLayout() {

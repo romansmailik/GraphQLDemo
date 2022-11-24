@@ -26,7 +26,16 @@ final class CreateRepositoryViewModel: BaseViewModel {
     }
     
     func onDoneTapped() {
-        transitionSubject.send(.done)
+        guard let title = title, !title.isEmpty else { return }
+        repositoryService.createRepository(CreateRepositoryModel(title: title, description: description, scope: scope))
+            .sink { [weak self] completion in
+                if case .failure(let error) = completion {
+                    self?.errorSubject.send(error)
+                }
+            } receiveValue: { [weak self] in
+                self?.transitionSubject.send(.done)
+            }
+            .store(in: &cancellables)
     }
 }
 

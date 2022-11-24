@@ -14,7 +14,10 @@ enum RepositoriesListTransition: Transition {
 
 final class RepositoriesListModuleBuilder {
     class func build(container: AppContainer) -> Module<RepositoriesListTransition, UIViewController> {
-        let viewModel = RepositoriesListViewModel(repositoryService: container.repositoryService)
+        let viewModel = RepositoriesListViewModel(
+            credentialsService: container.credentialsService,
+            repositoryService: container.repositoryService
+        )
         let viewController = RepositoriesListViewController(viewModel: viewModel)
         return Module(viewController: viewController, transitionPublisher: viewModel.transitionPublisher)
     }

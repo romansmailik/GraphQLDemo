@@ -35,6 +35,10 @@ final class RepositoriesListViewController: BaseViewController<RepositoriesListV
                 }
             }
             .store(in: &cancellables)
+        
+        viewModel.$repositories
+            .sink { [unowned self] in contentView.show(repositories: $0) }
+            .store(in: &cancellables)
     }
     
     @objc private func addButtonTapped() {

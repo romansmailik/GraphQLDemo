@@ -19,4 +19,13 @@ enum RepositoryScopeOption: CaseIterable {
             return "Public"
         }
     }
+    
+    var repositoryVisibility: RepositoryVisibility {
+        switch self {
+        case .private:
+            return .private
+        case .public:
+            return .public
+        }
+    }
 }

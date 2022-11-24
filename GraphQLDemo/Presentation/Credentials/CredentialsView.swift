@@ -51,15 +51,18 @@ private extension CredentialsView {
 
     func bindActions() {
         nicknameTextField.textPublisher
-            .sink { [unowned self] in actionSubject.send(.nicknameChanged(nickname: $0)) }
+            .map { CredentialsViewAction.nicknameChanged(nickname: $0) }
+            .sink { [unowned self] in actionSubject.send($0) }
             .store(in: &cancellables)
         
         tokenTextField.textPublisher
-            .sink { [unowned self] in actionSubject.send(.tokenChanged(token: $0)) }
+            .map { CredentialsViewAction.tokenChanged(token: $0) }
+            .sink { [unowned self] in actionSubject.send($0) }
             .store(in: &cancellables)
         
         doneButton.tapPublisher
-            .sink { [unowned self] in actionSubject.send(.doneTapped) }
+            .map { CredentialsViewAction.doneTapped }
+            .sink { [unowned self] in actionSubject.send($0) }
             .store(in: &cancellables)
     }
 
