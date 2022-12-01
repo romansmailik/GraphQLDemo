@@ -1,17 +1,28 @@
-fragment NodeDetails on Repository {
+fragment RepoInfo on Repository {
   id
   name
-  createdAt
   description
-  url
   stargazerCount
 }
 
-query GetRepositoriesByUserName($username: String!) {
+query GetLatestRepositories($username: String!) {
   user(login: $username) {
     repositories(last: 10) {
       nodes {
-        ...NodeDetails
+        ...RepoInfo
+      }
+    }
+  }
+}
+
+query GetTopRatedRepositories($username: String!) {
+  user(login: $username) {
+    repositories(first: 10, orderBy: {
+      field: STARGAZERS,
+      direction: DESC
+    }) {
+      nodes {
+        ...RepoInfo
       }
     }
   }
@@ -25,22 +36,5 @@ mutation CreateRepository($name: String!, $description: String, $visibility:Repo
     clientMutationId: $clientMutationId
   }) {
     clientMutationId
-  }
-}
-
-query GetTopRepositoriesForUser($username: String!) {
-  user(login: $username) {
-    name
-    repositories(
-      first: 10,
-      orderBy: {
-        field: STARGAZERS
-        direction: DESC
-      }
-    ) {
-      nodes {
-        ...NodeDetails
-      }
-    }
   }
 }

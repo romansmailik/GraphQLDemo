@@ -42,13 +42,14 @@
 		74484256292D384500C65181 /* NetworkInterceptorProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74484255292D384500C65181 /* NetworkInterceptorProvider.swift */; };
 		74484258292FF7F200C65181 /* RepositoryDomainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74484257292FF7F200C65181 /* RepositoryDomainModel.swift */; };
 		7448425A292FF80E00C65181 /* CreateRepositoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74484259292FF80E00C65181 /* CreateRepositoryModel.swift */; };
+		7448425C2930E1B800C65181 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7448425B2930E1B800C65181 /* NetworkError.swift */; };
+		74484264293108D600C65181 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74484263293108D600C65181 /* API.swift */; };
 		74527E3F292AC7CC008DDD91 /* RepositoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74527E3E292AC7CC008DDD91 /* RepositoryTableViewCell.swift */; };
 		74527E41292ACD30008DDD91 /* RepositoryDisplayOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74527E40292ACD30008DDD91 /* RepositoryDisplayOption.swift */; };
 		74527E43292ACD4E008DDD91 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74527E42292ACD4E008DDD91 /* Credentials.swift */; };
 		74527E45292CD226008DDD91 /* RepositoryScopeOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74527E44292CD226008DDD91 /* RepositoryScopeOption.swift */; };
 		74527E4C292CD4AF008DDD91 /* Queries.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 74527E4B292CD4AF008DDD91 /* Queries.graphql */; };
 		74527E4F292CD570008DDD91 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 74527E4E292CD570008DDD91 /* schema.json */; };
-		74527E51292CD5A6008DDD91 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74527E50292CD5A6008DDD91 /* API.swift */; };
 		74A4F3A5292A6CA5007C4DF7 /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = 74A4F3A4292A6CA5007C4DF7 /* Apollo */; };
 		74A4F3AB292A6D3E007C4DF7 /* CredentialsModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A4F3A7292A6D3E007C4DF7 /* CredentialsModuleBuilder.swift */; };
 		74A4F3AC292A6D3E007C4DF7 /* CredentialsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A4F3A8292A6D3E007C4DF7 /* CredentialsViewController.swift */; };
@@ -126,13 +127,14 @@
 		74484255292D384500C65181 /* NetworkInterceptorProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkInterceptorProvider.swift; sourceTree = "<group>"; };
 		74484257292FF7F200C65181 /* RepositoryDomainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDomainModel.swift; sourceTree = "<group>"; };
 		74484259292FF80E00C65181 /* CreateRepositoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRepositoryModel.swift; sourceTree = "<group>"; };
+		7448425B2930E1B800C65181 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		74484263293108D600C65181 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		74527E3E292AC7CC008DDD91 /* RepositoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryTableViewCell.swift; sourceTree = "<group>"; };
 		74527E40292ACD30008DDD91 /* RepositoryDisplayOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDisplayOption.swift; sourceTree = "<group>"; };
 		74527E42292ACD4E008DDD91 /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		74527E44292CD226008DDD91 /* RepositoryScopeOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryScopeOption.swift; sourceTree = "<group>"; };
 		74527E4B292CD4AF008DDD91 /* Queries.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Queries.graphql; sourceTree = "<group>"; };
 		74527E4E292CD570008DDD91 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
-		74527E50292CD5A6008DDD91 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		74A4F3A7292A6D3E007C4DF7 /* CredentialsModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialsModuleBuilder.swift; sourceTree = "<group>"; };
 		74A4F3A8292A6D3E007C4DF7 /* CredentialsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialsViewController.swift; sourceTree = "<group>"; };
 		74A4F3A9292A6D3E007C4DF7 /* CredentialsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialsView.swift; sourceTree = "<group>"; };
@@ -225,11 +227,12 @@
 		0AFD5D89B9D02E9501FCCA7B /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				74527E40292ACD30008DDD91 /* RepositoryDisplayOption.swift */,
 				74527E42292ACD4E008DDD91 /* Credentials.swift */,
+				74527E40292ACD30008DDD91 /* RepositoryDisplayOption.swift */,
 				74527E44292CD226008DDD91 /* RepositoryScopeOption.swift */,
 				74484257292FF7F200C65181 /* RepositoryDomainModel.swift */,
 				74484259292FF80E00C65181 /* CreateRepositoryModel.swift */,
+				7448425B2930E1B800C65181 /* NetworkError.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -348,8 +351,8 @@
 		7448424A292D27FC00C65181 /* GraphQL */ = {
 			isa = PBXGroup;
 			children = (
+				74484263293108D600C65181 /* API.swift */,
 				7448424E292D35BF00C65181 /* Interceptors */,
-				74527E50292CD5A6008DDD91 /* API.swift */,
 				74527E4E292CD570008DDD91 /* schema.json */,
 				74527E4B292CD4AF008DDD91 /* Queries.graphql */,
 			);
@@ -535,8 +538,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 64868E8227B24438424C377D /* Build configuration list for PBXNativeTarget "GraphQLDemo" */;
 			buildPhases = (
-				74527E4D292CD4CD008DDD91 /* Apollo */,
 				74A4F3C8292A95E5007C4DF7 /* SwiftGen */,
+				744842622931083600C65181 /* Apollo Codegen */,
 				44F55763C95B32AF682F2531 /* Sources */,
 				DE7EAAFC556E4F190057ED60 /* Resources */,
 				46C77C9EA04FB434B9C68A4F /* Frameworks */,
@@ -622,7 +625,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		74527E4D292CD4CD008DDD91 /* Apollo */ = {
+		744842622931083600C65181 /* Apollo Codegen */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -631,14 +634,14 @@
 			);
 			inputPaths = (
 			);
-			name = Apollo;
+			name = "Apollo Codegen";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Go to the build root and search up the chain to find the Derived Data Path where the source packages are checked out.\nDERIVED_DATA_CANDIDATE=\"${BUILD_ROOT}\"\n\nwhile ! [ -d \"${DERIVED_DATA_CANDIDATE}/SourcePackages\" ]; do\n  if [ \"${DERIVED_DATA_CANDIDATE}\" = / ]; then\n    echo >&2 \"error: Unable to locate SourcePackages directory from BUILD_ROOT: '${BUILD_ROOT}'\"\n    exit 1\n  fi\n\n  DERIVED_DATA_CANDIDATE=\"$(dirname \"${DERIVED_DATA_CANDIDATE}\")\"\ndone\n\n# Grab a reference to the directory where scripts are checked out\nSCRIPT_PATH=\"${DERIVED_DATA_CANDIDATE}/SourcePackages/checkouts/apollo-ios/scripts\"\n\nif [ -z \"${SCRIPT_PATH}\" ]; then\n    echo >&2 \"error: Couldn't find the CLI script in your checked out SPM packages; make sure to add the framework to your project.\"\n    exit 1\nfi\n\ncd \"${SRCROOT}/${TARGET_NAME}\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --includes=./**/*.graphql --localSchemaFile=\"./BusinessLogic/Services/GraphQL/schema.json\" ./BusinessLogic/Services/GraphQL/API.swift\n";
+			shellScript = "DERIVED_DATA_CANDIDATE=\"${BUILD_ROOT}\"\n\nwhile ! [ -d \"${DERIVED_DATA_CANDIDATE}/SourcePackages\" ]; do\n  if [ \"${DERIVED_DATA_CANDIDATE}\" = / ]; then\n    echo >&2 \"error: Unable to locate SourcePackages directory from BUILD_ROOT: '${BUILD_ROOT}'\"\n    exit 1\n  fi\n\n  DERIVED_DATA_CANDIDATE=\"$(dirname \"${DERIVED_DATA_CANDIDATE}\")\"\ndone\n\n# Grab a reference to the directory where scripts are checked out\nSCRIPT_PATH=\"${DERIVED_DATA_CANDIDATE}/SourcePackages/checkouts/apollo-ios/scripts\"\n\nif [ -z \"${SCRIPT_PATH}\" ]; then\n    echo >&2 \"error: Couldn't find the CLI script in your checked out SPM packages; make sure to add the framework to your project.\"\n    exit 1\nfi\n\ncd \"${SRCROOT}/${TARGET_NAME}\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --includes=./**/*.graphql --localSchemaFile=\"./BusinessLogic/Services/GraphQL/schema.json\" ./BusinessLogic/Services/GraphQL/API.swift\n";
 		};
 		74A4F3C8292A95E5007C4DF7 /* SwiftGen */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -674,6 +677,7 @@
 				9DECA51A604DC993C0C2EFB8 /* AppCoordinator.swift in Sources */,
 				DA4B094B40D463DEEF30BEDF /* AppDelegate.swift in Sources */,
 				74484252292D379400C65181 /* RequestLoggingInterceptor.swift in Sources */,
+				7448425C2930E1B800C65181 /* NetworkError.swift in Sources */,
 				599275E802F4B67B0037F2D4 /* AppEnvironment.swift in Sources */,
 				74A4F3B7292A9217007C4DF7 /* RepositoriesListModuleBuilder.swift in Sources */,
 				CB046D8A6D96046408F769BD /* Assets.swift in Sources */,
@@ -698,13 +702,13 @@
 				4D743561CEFF0C00FDA1EDFD /* Localization.swift in Sources */,
 				74A4F3C4292A9522007C4DF7 /* CreateRepositoryModuleBuilder.swift in Sources */,
 				62C537C81EB2C8E0DC68F8E4 /* MainTabBarCoordinator.swift in Sources */,
+				74484264293108D600C65181 /* API.swift in Sources */,
 				74A4F3BC292A9479007C4DF7 /* RepositoriesService.swift in Sources */,
 				9FB79C7390CCAB89C3572DDA /* MainTabBarModuleBuilder.swift in Sources */,
 				33765E5609C4CDE1FC3C850F /* MainTabBarViewController.swift in Sources */,
 				74484258292FF7F200C65181 /* RepositoryDomainModel.swift in Sources */,
 				512B7644DE625852B7BFA62D /* MainTabBarViewModel.swift in Sources */,
 				74A4F3C5292A9522007C4DF7 /* CreateRepositoryViewController.swift in Sources */,
-				74527E51292CD5A6008DDD91 /* API.swift in Sources */,
 				418C921022090E7AA7C5FC71 /* Module.swift in Sources */,
 				239DAA98D7FA7C539450FC9E /* SceneDelegate.swift in Sources */,
 				322D07C30C697634C46D9156 /* SettingsCoordinator.swift in Sources */,

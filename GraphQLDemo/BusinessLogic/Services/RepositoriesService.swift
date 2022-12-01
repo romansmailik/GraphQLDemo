@@ -9,10 +9,6 @@ import Foundation
 import Combine
 import Apollo
 
-enum NetworkError: Error {
-    case noData
-}
-
 protocol RepositoriesService {
     func getLatestRepositories(username: String) -> AnyPublisher<[RepositoryDomainModel], Error>
     func getTopRatedRepositories(username: String) -> AnyPublisher<[RepositoryDomainModel], Error>
@@ -20,6 +16,7 @@ protocol RepositoriesService {
 }
 
 final class RepositoriesServiceImpl: RepositoriesService {
+    
     let apolloClient: ApolloClient
     
     init(apolloClient: ApolloClient) {
@@ -27,17 +24,25 @@ final class RepositoriesServiceImpl: RepositoriesService {
     }
     
     func getLatestRepositories(username: String) -> AnyPublisher<[RepositoryDomainModel], Error> {
-        return Future<[RepositoryDomainModel], Error> { [weak self] promise in
-            guard let self = self else { return }
-            self.apolloClient.fetch(query: GetRepositoriesByUserNameQuery(username: username), cachePolicy: .fetchIgnoringCacheData) { result in
+        
+        Future<[RepositoryDomainModel], Error> { [weak self] promise in
+            guard let self = self else {
+                promise(.failure(NetworkError.unspecified))
+                return
+            }
+            self.apolloClient.fetch(query: GetLatestRepositoriesQuery(username: username), cachePolicy: .fetchIgnoringCacheData) { result in
                 switch result {
                 case .success(let graphQLResult):
+                    if let error = graphQLResult.errors?.first {
+                        promise(.failure(error))
+                        return
+                    }
                     guard let nodes = graphQLResult.data?.user?.repositories.nodes else {
                         promise(.failure(NetworkError.noData))
                         return
                     }
                     let repositories = nodes
-                        .compactMap { $0?.fragments.nodeDetails }
+                        .compactMap { $0?.fragments.repoInfo }
                         .map { RepositoryDomainModel(response: $0) }
                     
                     promise(.success(repositories))
@@ -52,7 +57,7 @@ final class RepositoriesServiceImpl: RepositoriesService {
     func getTopRatedRepositories(username: String) -> AnyPublisher<[RepositoryDomainModel], Error> {
         return Future<[RepositoryDomainModel], Error> { [weak self] promise in
             guard let self = self else { return }
-            self.apolloClient.fetch(query: GetTopRepositoriesForUserQuery(username: username), cachePolicy: .fetchIgnoringCacheData) { result in
+            self.apolloClient.fetch(query: GetTopRatedRepositoriesQuery(username: username), cachePolicy: .fetchIgnoringCacheData) { result in
                 switch result {
                 case .success(let graphQLResult):
                     guard let nodes = graphQLResult.data?.user?.repositories.nodes else {
@@ -60,7 +65,7 @@ final class RepositoriesServiceImpl: RepositoriesService {
                         return
                     }
                     let repositories = nodes
-                        .compactMap { $0?.fragments.nodeDetails }
+                        .compactMap { $0?.fragments.repoInfo }
                         .map { RepositoryDomainModel(response: $0) }
                     
                     promise(.success(repositories))
